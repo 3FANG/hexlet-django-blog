@@ -12,10 +12,10 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context['who'] = "World"
-        return
+        return context
 
-    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
-        return redirect(reverse("artilce_with_tags_id", kwargs={'tags': 'python', 'article_id': 42}))
+    # def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
+    #     return redirect(reverse("article_id", kwargs={'id': 1}))
 
 
 def about(request):
