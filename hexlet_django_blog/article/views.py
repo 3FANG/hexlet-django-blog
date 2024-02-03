@@ -5,9 +5,13 @@ from django.views import View
 from hexlet_django_blog.article.models import Article
 
 
-class ArticleView(View):
+class IndexView(View):
+
     def get(self, request, *args, **kwargs) -> HttpResponse:
-        return render(request, 'articles/index.html', context={'articles': Article.objects.all()})
+        articles = Article.objects.all()[:15]
+        return render(request, 'articles/index.html', context={
+            'articles': articles
+        })
 
 
 def article(request, tags: str, article_id: int) -> HttpResponse:
